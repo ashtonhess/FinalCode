@@ -4,7 +4,8 @@
 
 #ifndef CODE_FILEGENERATOR_H
 #define CODE_FILEGENERATOR_H
-
+#include <iostream>
+using namespace std;
 
 class FileGenerator {
 
