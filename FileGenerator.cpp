@@ -3,6 +3,8 @@
 //
 
 #include "FileGenerator.h"
+pthread_mutex_t wmtx;
+
 FileGenerator::FileGenerator() {
 
 }
@@ -43,7 +45,7 @@ void FileGenerator::writeFile(){
 //    }
 //    std::cout << "Finished file write." << std::endl;
 //    matrixFile.close();
-
+   // pthread_mutex_destroy(&wmtx);
 }
 //v=200
 //c=200
@@ -57,7 +59,6 @@ void*FileGenerator::vThread(void*input) {
         Character *v = create->generateVowelCharacter();
         pthread_mutex_lock(&wmtx);
         outFile->open("output.txt", ios::app);
-
         //writing to file while this thread has the mutex locked.
         cout<<"vowel "<<v->getChar()<<endl;
         *outFile << v->getChar();

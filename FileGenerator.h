@@ -13,7 +13,6 @@
 #include "CharacterCreator.h"
 using namespace std;
 
-pthread_mutex_t wmtx;
 
 class FileGenerator {
 private:

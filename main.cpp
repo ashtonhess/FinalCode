@@ -1,14 +1,14 @@
 #include <iostream>
 using namespace std;
-#include "Character.h"
-#include "VowelCharacter.h"
-#include "ConsonantCharacter.h"
-#include "NumberCharacter.h"
-#include "Creator.h"
-#include "CharacterCreator.h"
+//#include "Character.h"
+//#include "VowelCharacter.h"
+//#include "ConsonantCharacter.h"
+//#include "NumberCharacter.h"
+//#include "Creator.h"
+//#include "CharacterCreator.h"
 #include "FileGenerator.h"
 
-int main(void){
+int main(){
 //
 //    Creator*create = new CharacterCreator();
 //
