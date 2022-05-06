@@ -12,7 +12,6 @@ FileGenerator::~FileGenerator(){
 }
 void FileGenerator::writeFile(){
     ofstream *outFile = new ofstream();
-    outFile->open("output.txt",ios_base::app);
     if(!*outFile){
         cerr<<"Error opening file: output.txt"<<endl;
     }
@@ -57,10 +56,12 @@ void*FileGenerator::vThread(void*input) {
     for (int i = 0; i < 200; ++i) {
         Character *v = create->generateVowelCharacter();
         pthread_mutex_lock(&wmtx);
-        //writing to file while this thread has the mutex locked.
-        cout<<v->getChar()<<endl;
-        *outFile << v->getChar();
+        outFile->open("output.txt", ios::app);
 
+        //writing to file while this thread has the mutex locked.
+        cout<<"vowel "<<v->getChar()<<endl;
+        *outFile << v->getChar();
+        outFile->close();
         pthread_mutex_unlock(&wmtx);
     }
     return NULL;
@@ -72,8 +73,11 @@ void*FileGenerator::cThread(void*input) {
         Character *c = create->generateConsonantCharacter();
         pthread_mutex_lock(&wmtx);
         //writing to file while this thread has the mutex locked.
-        cout<<c->getChar()<<endl;
+        outFile->open("output.txt", ios::app);
+        cout<<"cons "<<c->getChar()<<endl;
         *outFile << c->getChar();
+        outFile->close();
+
         pthread_mutex_unlock(&wmtx);
     }
     return NULL;
@@ -86,10 +90,15 @@ void*FileGenerator::nThread(void*input) {
         //write to file
         pthread_mutex_lock(&wmtx);
         //writing to file while this thread has the mutex locked.
-        cout<<n->getChar()<<endl;
+        outFile->open("output.txt", ios::app);
+
+        cout<<"number "<<n->getChar()<<endl;
         *outFile << n->getChar();
+        outFile->close();
+
         pthread_mutex_unlock(&wmtx);
     }
+
     return NULL;
 }
 
