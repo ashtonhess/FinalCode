@@ -13,6 +13,8 @@ private:
     string search_substring;
     int substring_count;
 public:
+    SubstringCounter(string searchString);
+    ~SubstringCounter(){};
     void setSearchSubstring(string searchSubstring);
     string getSearchSubstring();
     void setSubstringCount(int substringCount);

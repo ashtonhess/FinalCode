@@ -3,6 +3,9 @@
 //
 
 #include "SubstringCounter.h"
+SubstringCounter::SubstringCounter(string searchString){
+    search_substring=searchString;
+}
 void SubstringCounter::setSearchSubstring(string searchSubstring){
     search_substring = searchSubstring;
 }
@@ -16,4 +19,6 @@ int SubstringCounter::getSubstringCount(){
     return substring_count;
 }
 
-//int readAndCount();
+int SubstringCounter::readAndCount(){
+return 0;
+}

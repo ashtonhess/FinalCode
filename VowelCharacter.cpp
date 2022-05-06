@@ -8,7 +8,7 @@ VowelCharacter::VowelCharacter() {
 }
 char VowelCharacter::randVowel(){
     //srand(time(nullptr));
-    //int randNum = (rand()%5+1)-1;
+    //int randNum = (rand()%5+1)-1; //this wouldn't get me random numbers unless compiled again
     random_device rd;
     mt19937 r(rd());
     uniform_int_distribution<>id(0,4);

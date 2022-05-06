@@ -17,6 +17,6 @@ char NumberCharacter::randNum(){
     mt19937 r(rd());
     uniform_int_distribution<>id(48,57);
     int rand=id(r);
-    cout<<"number rand number: "<<rand<<endl;
+    //cout<<"number rand number: "<<rand<<endl;
     return rand;
 }

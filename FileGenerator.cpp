@@ -17,15 +17,17 @@ void FileGenerator::writeFile(){
     if(!*outFile){
         cerr<<"Error opening file: output.txt"<<endl;
     }
+    //initializing mutex
     if(pthread_mutex_init(&wmtx, NULL) != 0) {
         std::cerr<< "Error initializing writer lock\n";
     }
     cout<<"Starting write to file w 3 threads"<<endl;
     pthread_t writeThreads[3];
+    //creating threads for each char type
     pthread_create(&writeThreads[0],NULL,vThread,(void*)outFile);
     pthread_create(&writeThreads[1],NULL,cThread,(void*)outFile);
     pthread_create(&writeThreads[2],NULL,nThread,(void*)outFile);
-
+    //joining threads
     for (int i = 0; i < 3; ++i) {
         pthread_join(writeThreads[i],NULL);
     }
@@ -57,13 +59,14 @@ void*FileGenerator::vThread(void*input) {
     Creator *create = new CharacterCreator();
     for (int i = 0; i < 200; ++i) {
         Character *v = create->generateVowelCharacter();
+        //get mutex for critical section
         pthread_mutex_lock(&wmtx);
-        outFile->open("output.txt", ios::app);
+        outFile->open("output.txt", ios::app);//open file for appending
         //writing to file while this thread has the mutex locked.
-        cout<<"vowel "<<v->getChar()<<endl;
-        *outFile << v->getChar();
-        outFile->close();
-        pthread_mutex_unlock(&wmtx);
+        //cout<<"vowel "<<v->getChar()<<endl;
+        *outFile << v->getChar();//put the char into the file
+        outFile->close();//close file after appending char
+        pthread_mutex_unlock(&wmtx);//unlock mutex so next operation can lock mutex
     }
     return NULL;
 }
@@ -75,7 +78,7 @@ void*FileGenerator::cThread(void*input) {
         pthread_mutex_lock(&wmtx);
         //writing to file while this thread has the mutex locked.
         outFile->open("output.txt", ios::app);
-        cout<<"cons "<<c->getChar()<<endl;
+        //cout<<"cons "<<c->getChar()<<endl;
         *outFile << c->getChar();
         outFile->close();
 
@@ -93,7 +96,7 @@ void*FileGenerator::nThread(void*input) {
         //writing to file while this thread has the mutex locked.
         outFile->open("output.txt", ios::app);
 
-        cout<<"number "<<n->getChar()<<endl;
+        //cout<<"number "<<n->getChar()<<endl;
         *outFile << n->getChar();
         outFile->close();
 
