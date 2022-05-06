@@ -9,7 +9,7 @@
 #include <pthread.h>
 #include <mutex>
 #include <fstream>
-
+#include "Singleton.h"
 #include "CharacterCreator.h"
 using namespace std;
 

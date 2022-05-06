@@ -7,7 +7,20 @@
 #include <iostream>
 using namespace std;
 #include <string>
+#include <fstream>
+#include <sstream>
+#include <vector>
 
+
+/*Define a class named “SubstringCounter”, that has a two private
+        attributes “string search_substring”, and “int substring _count”
+        that has public getter and setter functions for each attribute.
+        The “SubstringCounter” class should contain one public function:
+        “int readAndCount()”. You should have 5 threads (reader threads)
+        created that has the task “int readAndCount()”. Since that you will
+        have 5 reader threads, this means that you will have 5 instances from
+        SubstringCounter.
+*/
 class SubstringCounter {
 private:
     string search_substring;
@@ -19,7 +32,7 @@ public:
     string getSearchSubstring();
     void setSubstringCount(int substringCount);
     int getSubstringCount();
-
+    string readFileIntoString();
     int readAndCount();
 
 

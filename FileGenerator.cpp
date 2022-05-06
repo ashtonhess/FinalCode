@@ -15,7 +15,7 @@ FileGenerator::~FileGenerator(){
 void FileGenerator::writeFile(){
     ofstream *outFile = new ofstream();
     if(!*outFile){
-        cerr<<"Error opening file: output.txt"<<endl;
+        cerr<<"Error creating ofstream"<<endl;
     }
     //initializing mutex
     if(pthread_mutex_init(&wmtx, NULL) != 0) {
@@ -61,7 +61,7 @@ void*FileGenerator::vThread(void*input) {
         Character *v = create->generateVowelCharacter();
         //get mutex for critical section
         pthread_mutex_lock(&wmtx);
-        outFile->open("output.txt", ios::app);//open file for appending
+        outFile->open(Singleton::getInstance()->getFile(), ios::app);//open file for appending
         //writing to file while this thread has the mutex locked.
         //cout<<"vowel "<<v->getChar()<<endl;
         *outFile << v->getChar();//put the char into the file
@@ -77,7 +77,7 @@ void*FileGenerator::cThread(void*input) {
         Character *c = create->generateConsonantCharacter();
         pthread_mutex_lock(&wmtx);
         //writing to file while this thread has the mutex locked.
-        outFile->open("output.txt", ios::app);
+        outFile->open(Singleton::getInstance()->getFile(), ios::app);
         //cout<<"cons "<<c->getChar()<<endl;
         *outFile << c->getChar();
         outFile->close();
@@ -94,7 +94,7 @@ void*FileGenerator::nThread(void*input) {
         //write to file
         pthread_mutex_lock(&wmtx);
         //writing to file while this thread has the mutex locked.
-        outFile->open("output.txt", ios::app);
+        outFile->open(Singleton::getInstance()->getFile(), ios::app);
 
         //cout<<"number "<<n->getChar()<<endl;
         *outFile << n->getChar();
