@@ -7,10 +7,14 @@ VowelCharacter::VowelCharacter() {
     vowelChar=randVowel();
 }
 char VowelCharacter::randVowel(){
-    srand(time(NULL));
-    int randNum = (rand()%5+1)-1;
-    cout<<"Vowel rand number: "<<randNum<<endl;
-    return vowels[randNum];
+    //srand(time(nullptr));
+    //int randNum = (rand()%5+1)-1;
+    random_device rd;
+    mt19937 r(rd());
+    uniform_int_distribution<>id(0,4);
+    int rand=id(r);
+    //cout<<"Vowel rand number: "<<rand<<endl;
+    return vowels[rand];
 }
 char VowelCharacter::getVowel(){
     return vowelChar;

@@ -6,7 +6,9 @@
 #define CODE_CHARACTER_H
 #include <iostream>
 using namespace std;
+#include <chrono>
 #include <stdlib.h>
+#include <random>
 
 class Character {
 public:
