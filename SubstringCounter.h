@@ -12,6 +12,7 @@ using namespace std;
 #include <vector>
 
 
+
 /*Define a class named “SubstringCounter”, that has a two private
         attributes “string search_substring”, and “int substring _count”
         that has public getter and setter functions for each attribute.
@@ -34,9 +35,11 @@ public:
     int getSubstringCount();
     string readFileIntoString();
     int readAndCount();
+    static void*subsThread(void*input);
 
 
-};
+
+    };
 
 
 #endif //CODE_SUBSTRINGCOUNTER_H
