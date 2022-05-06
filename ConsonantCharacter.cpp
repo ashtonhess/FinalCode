@@ -11,7 +11,6 @@ char ConsonantCharacter::randConsonant(){
 char ConsonantCharacter::getChar(){
     return consonantChar;
 }
-
 ConsonantCharacter::ConsonantCharacter() {
     consonantChar=randConsonant();
 }

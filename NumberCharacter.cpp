@@ -14,4 +14,3 @@ char NumberCharacter::randNum(){
     int randNum=48+(rand()%(57-48+1));
     return (char)randNum;
 }
-
