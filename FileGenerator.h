@@ -8,7 +8,9 @@
 using namespace std;
 
 class FileGenerator {
-
+private:
+public:
+    void writeFile();
 };
 
 

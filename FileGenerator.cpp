@@ -3,3 +3,6 @@
 //
 
 #include "FileGenerator.h"
+void FileGenerator::writeFile(){
+
+}

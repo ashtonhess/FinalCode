@@ -9,6 +9,13 @@ using namespace std;
 #include "Character.h"
 
 class NumberCharacter: public Character {
+private:
+    char numChar;
+public:
+    char getChar() override;
+    NumberCharacter();
+    ~NumberCharacter(){};
+    char randNum();
 
 };
 

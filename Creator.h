@@ -6,9 +6,16 @@
 #define CODE_CREATOR_H
 #include <iostream>
 using namespace std;
+#include "Character.h"
 
 class Creator {
+private:
+public:
 
+    virtual ~Creator(){};
+    virtual Character* generateVowelCharacter()=0;
+    virtual Character* generateConsonantCharacter()=0;
+    virtual Character* generateNumberCharacter()=0;
 };
 
 

@@ -1,4 +1,4 @@
-CXXFLAGS := -std=c++14 -Wall -Werror -ggdb -O0 -pthread
+CXXFLAGS := -std=c++14 -Wall -Werror -ggdb -O0
 SOURCES := $(wildcard *.cpp)
 OBJS := $(SOURCES:%.cpp=%.o)
 TARGET := code

@@ -9,6 +9,15 @@ using namespace std;
 #include "Character.h"
 
 class VowelCharacter: public Character {
+private:
+    char vowelChar;
+public:
+    char getChar() override;
+    VowelCharacter();
+    ~VowelCharacter(){};
+    char vowels[5]= {'a','e','i','o','u'};
+    char randVowel();
+    char getVowel();
 
 };
 

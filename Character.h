@@ -6,9 +6,12 @@
 #define CODE_CHARACTER_H
 #include <iostream>
 using namespace std;
+#include <stdlib.h>
 
 class Character {
-
+public:
+    virtual ~Character(){};
+    virtual char getChar() = 0;
 };
 
 

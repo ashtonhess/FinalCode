@@ -7,14 +7,21 @@
 #include <iostream>
 using namespace std;
 #include "Creator.h"
+#include "Character.h"
+#include "VowelCharacter.h"
+#include "ConsonantCharacter.h"
+#include "NumberCharacter.h"
 
 class CharacterCreator: public Creator {
 private:
 public:
-    Character* generateVowelCharacter();
-    Character* generateConsonantCharacter();
-    Character* generateNumberCharacter();
+    //CharacterCreator(){};
+    ~CharacterCreator()override {};
+    Character* generateVowelCharacter() override;
+    Character* generateConsonantCharacter() override;
+    Character* generateNumberCharacter() override;
 };
+
 
 
 #endif //CODE_CHARACTERCREATOR_H
